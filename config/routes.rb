@@ -1,4 +1,6 @@
 Social::Application.routes.draw do
+  resources :posts
+
   get "home/index"
 
   devise_for :users
