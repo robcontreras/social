@@ -1,0 +1,16 @@
+<ul>
+	<%  current_user.posts.order("created_at DESC").each  do |p| %>
+		<li>
+			<%= p.content %>
+			<% commentable = p %>
+			<% comments = commentable.comments.recent.limit(10).all %>
+			<% unless comments.count == 0 %>
+				<% comments.each do |c| %>
+					<em><%= "#{c.comment} by #{c.title}" %></em>
+				<% end %>
+			<% else %>
+				<p>No Comments</p>
+			<% end %>
+		</li>
+	<% end %>
+</ul>
